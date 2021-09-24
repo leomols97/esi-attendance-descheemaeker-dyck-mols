@@ -10,6 +10,7 @@ class StudentCtrl extends Controller
     public function home()
     {
         $students = StudentModel::findAll();
-        return view("student", ["students" => $students]);
+        $students_json = json_encode($students);
+        return view("student", ["students" => $students_json]);
     }
 }
