@@ -5,56 +5,93 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use App\Models\StudentModel;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PDOException;
 
 use function PHPUnit\Framework\assertEquals;
+use function PHPUnit\Framework\assertFalse;
 
 class StudentModelTest extends TestCase
 {
-    use RefreshDatabase;
+    //use RefreshDatabase;
 
     /**
-     * A basic feature test example.
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function test_example()
+    {
+        $this->assertTrue(true);
+    }
+
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function test_basic_test()
+    {
+        $data = [10, 20, 30];
+        $result = array_sum($data);
+        $this->assertEquals(60, $result);
+    }
+
+    /**
+     * Counting the numbre of students in the data base
      *
      * @return void
      */
     public function test_consultation()
     {
         $count = count(StudentModel::findAll());
-        assertEquals(11, $count);
+        assertEquals(7, $count);
     }
 
     /**
-     * A basic feature test example.
+     * Trying to add a simple student
      *
      * @return void
      */
-    public function test_select_student()
+    public function test_add_student()
     {
-        $student = StudentModel::selectStudent(1);
-        echo $student;
-        $id = $student[0];
-        $last_name = $student[1];
-        $first_name = $student[2];
-        $attr = "" . $id . " " . $last_name . " " . $first_name;
-        $student = "1 Squarepants Bob";
-        assertEquals($student, $attr);
-
-        $student = StudentModel::factory()->make(
-            [
-                ''
-            ]
-        );
-    }
-
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function test_adding()
-    {
+        // Make call to application...
         StudentModel::addStudent(1, 'Squarepants', 'Bob');
-        $student = StudentModel::selectStudent(1);
-        assertEquals($student, StudentModel::selectStudent(1));
+        //StudentModel::selectStudent(1);
+
+        $this->assertDatabaseHas('Students', [
+            'id' => 1,
+            'last_name' => 'Squarepants',
+            'first_name' => 'Bob'
+        ]);
+    }
+
+    /**
+     * Trying to add an existing id student
+     *
+     * @return void
+     */
+    public function test_add_existing_student()
+    {
+        $this->expectException(PDOException::class);
+        // or for PHPUnit < 5.2
+        // $this->setExpectedException(InvalidArgumentException::class);
+
+        //...and then add your test code that generates the exception
+        StudentModel::addStudent(1, 'Squarepants', 'Bob');
+    }
+
+    /**
+     * Trying to add an id lower than 0
+     *
+     * @return void
+     */
+    public function test_add_student_invalid_id()
+    {
+        $this->expectException(PDOException::class);
+        // or for PHPUnit < 5.2
+        // $this->setExpectedException(InvalidArgumentException::class);
+
+        //...and then add your test code that generates the exception
+        StudentModel::addStudent(-1, 'Squarepants', 'Bob');
     }
 }
