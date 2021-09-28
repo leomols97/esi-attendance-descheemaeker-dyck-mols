@@ -32,24 +32,6 @@ main h1 {
     border-radius: 40px 10px;
 }
 
-#achat{
-    background-color:#236ab9 ;
-    color: white;
-}
-
-a {
-    text-decoration: none;
-}
-
-a:link, a:visited {
-    color: black;
-}
-
-a:hover, a:active {
-    /*background-color: blue;*/
-    color: black;
-}
-
 table {
     border: 1px;
     border-style: groove;
