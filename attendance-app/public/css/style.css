@@ -51,3 +51,14 @@ table th {
 table td {
     padding: 2px 10px;
 }
+
+form{
+    padding: 20px 20px;
+    border: 2px solid black;
+    width: 300px;
+    display: inline-block;
+}
+
+div{
+    padding: 20px;
+}

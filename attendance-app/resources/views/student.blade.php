@@ -20,4 +20,34 @@
             @endforeach
         </table>
     @endif
+    <div>
+        <form id="add" @submit="checkForm" action="">
+            <h5>Add a Student:</h5>
+            <!--<p v-if="errors.length">
+                <b>Please correct the following error(s)</b>
+                <ul>
+                    <li v-for="error in errors">@{{error}}</li>
+                </ul>
+            </p>-->
+            <p>
+                <label for="id">Id :</label>
+                <input id="id" type="number" v-model="id">
+            </p>
+            <p>
+                <label for="LastName">Last Name :</label>
+                <input id="LastName" type="text" v-model="LastName">
+            </p>
+            <p>
+                <label for="FirstName">First Name :</label>
+                <input id="FirstName" type="text" v-model="FirstName">
+            </p>
+            <p><input type="submit" value="Add"></p>
+        </form>
+        <form id="delete" action="">
+            <h5>Delete a Student:</h5>
+            <label for="id">Id:</label>
+            <input id="id" type="number">
+            <input type="submit" value=delete>
+        </form>
+    </div>
 @endsection
