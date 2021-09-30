@@ -30,7 +30,12 @@ class StudentModel extends Model
 
     static public function selectStudent($id)
     {
-        $student = DB::select('select * from Students where id = ?', [$id]);
+        $student = DB::select('SELECT * FROM Students WHERE id = ?', [$id]);
         return $student;
+    }
+
+    static public function deleteStudent($id)
+    {
+        DB::delete('DELETE FROM Students WHERE id = ?', [$id]);
     }
 }
