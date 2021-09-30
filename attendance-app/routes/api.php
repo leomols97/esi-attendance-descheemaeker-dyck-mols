@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\StudentCtrl;
+use App\Http\Controllers\CourseCtrl;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('students', [StudentCtrl::class, 'home']);
+Route::get('course', [CourseCtrl::class, 'home']);

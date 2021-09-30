@@ -13,16 +13,19 @@ class StudentModel extends Model
     static public function findAll()
     {
         $students = DB::select('
-        SELECT id, last_name, first_name
-        FROM Students
-        ORDER BY id ASC
+            SELECT id, last_name, first_name
+            FROM Students
+            ORDER BY id ASC
         ');
         return $students;
     }
 
     static public function addStudent($id, $last_name, $first_name)
     {
-        DB::insert('insert into Students (id, last_name, first_name) values (?, ?, ?)', [$id, $last_name, $first_name]);
+        DB::insert('
+            INSERT INTO Students (id, last_name, first_name) values (?, ?, ?)
+            ', [$id, $last_name, $first_name]
+        );
     }
 
     static public function selectStudent($id)
