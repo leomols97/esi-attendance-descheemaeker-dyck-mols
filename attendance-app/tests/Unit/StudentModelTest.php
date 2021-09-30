@@ -94,4 +94,29 @@ class StudentModelTest extends TestCase
         //...and then add your test code that generates the exception
         StudentModel::addStudent(-1, 'Squarepants', 'Bob');
     }
+
+    /**
+     * Trying to delete an unexisting id
+     *
+     * @return void
+     */
+    public function test_delete_student_invalid_id()
+    {
+        $this->expectException(PDOException::class);
+        // or for PHPUnit < 5.2
+        // $this->setExpectedException(InvalidArgumentException::class);
+
+        //...and then add your test code that generates the exception
+        StudentModel::deleteStudent(2);
+    }
+
+    /**
+     * Trying to delete an unexisting id
+     *
+     * @return void
+     */
+    public function test_delete_student()
+    {
+        #code pour delete le student
+    }
 }
