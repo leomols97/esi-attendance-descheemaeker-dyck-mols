@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use PDOException;
+use PDORow;
+use PhpParser\Node\Stmt\TryCatch;
 
 class StudentModel extends Model
 {
@@ -30,12 +33,7 @@ class StudentModel extends Model
 
     static public function selectStudent($id)
     {
-        $student = DB::select('SELECT * FROM Students WHERE id = ?', [$id]);
+        $student = DB::select('select * from Students where id = ?', [$id]);
         return $student;
-    }
-
-    static public function deleteStudent($id)
-    {
-        DB::delete('DELETE FROM Students WHERE id = ?', [$id]);
     }
 }
