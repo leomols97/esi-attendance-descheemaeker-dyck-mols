@@ -38,6 +38,6 @@ class StudentModel extends Model
     }
 
     static public function deleteStudent($id){
-        DB::delete('DELETE FROM students WHERE id=?', [$id]);
+        DB::delete('delete from Students where id=?', [$id]);
     }
 }

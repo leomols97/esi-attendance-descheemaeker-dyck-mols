@@ -40,19 +40,11 @@ class StudentCtrl extends Controller
     public function deleteStudent()
     {
         $array=[];
-        if(isset($_REQUEST["id"]))
+        if(isset($_REQUEST["id2"]))
         {
-            if (StudentModel::selectStudent($_REQUEST["id"]) != nullOrEmptyString())
-            {
-                $id = $_REQUEST["id"];
-                $deleted = StudentModel::deleteStudent($id);
-                $array = ["deleted" => $deleted];
-            }
-            else
-            {
-                $deleted = false;
-                $array = ["deleted" => $deleted];
-            }
+            $id = $_REQUEST["id2"];
+            $deleted = StudentModel::deleteStudent($id);
+            $array = ["deleted" => $deleted];
         }
         else
         {

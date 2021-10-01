@@ -24,12 +24,6 @@
         <form id="add" @submit="checkForm" action="/student/add" method="POST">
             @csrf
             <h5>Add a Student:</h5>
-            <!--<p v-if="errors.length">
-                <b>Please correct the following error(s)</b>
-                <ul>
-                    <li v-for="error in errors">@{{error}}</li>
-                </ul>
-            </p>-->
             <p>
                 <label for="id">Id :</label>
                 <input id="id" name="id" type="number" v-model="id">
@@ -48,8 +42,8 @@
             @csrf
             <h5>Delete a Student:</h5>
             <label for="id">Id:</label>
-            <input id="id" type="number">
-            <input type="submit" value=delete>
+            <input id="id" name="id2" type="number">
+            <input type="submit" value=Delete>
         </form>
     </div>
 @endsection
