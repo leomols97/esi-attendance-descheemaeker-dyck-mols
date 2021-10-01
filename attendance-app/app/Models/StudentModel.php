@@ -5,9 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use PDOException;
-use PDORow;
-use PhpParser\Node\Stmt\TryCatch;
+use Illuminate\Database\QueryException;
 
 class StudentModel extends Model
 {
@@ -25,10 +23,14 @@ class StudentModel extends Model
 
     static public function addStudent($id, $last_name, $first_name)
     {
-        DB::insert('
-            INSERT INTO Students (id, last_name, first_name) values (?, ?, ?)
-            ', [$id, $last_name, $first_name]
-        );
+        try {
+            DB::insert('
+                INSERT INTO Students (id, last_name, first_name) values (?, ?, ?)
+                ', [$id, $last_name, $first_name]
+            );
+        } catch (QueryException $th) {
+            echo "Student existant";
+        }
     }
 
     static public function selectStudent($id)

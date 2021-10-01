@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\StudentModel;
+use FFI\Exception as FFIException;
 
 class StudentCtrl extends Controller
 {
@@ -51,7 +52,7 @@ class StudentCtrl extends Controller
     public function deleteStudent()
     {
         $array=[];
-        if(isset($_REQUEST["id2"]))
+        if(isset($_REQUEST["id"]))
         {
             $id = $_REQUEST["id"];
             $deleted = StudentModel::deleteStudent($id);
