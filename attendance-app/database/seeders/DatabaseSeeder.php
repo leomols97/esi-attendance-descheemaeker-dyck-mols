@@ -33,5 +33,12 @@ class DatabaseSeeder extends Seeder
             'date' => date(\Carbon\Carbon::createFromDate(rand(2000, 2022), rand(0, 12), rand(0, 28))->toDateString()),
             'hour' => \Carbon\Carbon::createFromTime(rand(0,24), rand(0, 60), rand(0, 60))->toTimeString(),
         ]);
+        for($i=1; $i<7; $i++){
+            DB::table('students')->insert([
+                'id' => random_int(10000, 99999),
+                'last_name' => Str::random(20),
+                'first_name' => Str::random(20),
+            ]);
+        }
     }
 }
