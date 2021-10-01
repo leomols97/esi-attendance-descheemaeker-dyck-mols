@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\StudentModel;
+use FFI\Exception as FFIException;
 
 class StudentCtrl extends Controller
 {
@@ -16,7 +17,7 @@ class StudentCtrl extends Controller
 
     static function selectStudent($id)
     {
-        return StudentModel::selectStudent($id);
+            return StudentModel::selectStudent($id);
     }
 
     static function existingStudent($id)
