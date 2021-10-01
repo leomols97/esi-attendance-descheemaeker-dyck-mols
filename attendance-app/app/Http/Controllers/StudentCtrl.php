@@ -17,7 +17,7 @@ class StudentCtrl extends Controller
 
     static function selectStudent($id)
     {
-            return StudentModel::selectStudent($id);
+        return StudentModel::selectStudent($id);
     }
 
     static function existingStudent($id)
@@ -52,7 +52,7 @@ class StudentCtrl extends Controller
     public function deleteStudent()
     {
         $array=[];
-        if(isset($_REQUEST["id2"]))
+        if(isset($_REQUEST["id"]))
         {
             $id = $_REQUEST["id"];
             $deleted = StudentModel::deleteStudent($id);

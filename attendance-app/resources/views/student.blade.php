@@ -37,6 +37,7 @@
                 <input id="FirstName" name="first_name" type="text" v-model="FirstName">
             </p>
             <p><input type="submit" value="Add"></p>
+            <div id="error"></div>
         </form>
         <form id="delete" action="/student/delete" method="POST">
             @csrf
