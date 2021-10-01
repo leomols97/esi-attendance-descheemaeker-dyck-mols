@@ -19,5 +19,6 @@ Route::get('/', function () {
 });
 
 Route::get('/student', [StudentCtrl::class, 'home']);
+Route::get('/course', [CourseCtrl::class, 'home']);
 Route::post('/student/add', [StudentCtrl::class, 'addStudent']);
 Route::post('/student/delete', [StudentCtrl::class, 'deleteStudent']);
