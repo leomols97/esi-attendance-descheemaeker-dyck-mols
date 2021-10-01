@@ -27,12 +27,12 @@ class StudentCtrl extends Controller
     public function addStudent()
     {
         $array=[];
-        $id = $_REQUEST["first_name"];
-        if(isset($id)
-            && isset($id)
-            && isset($id)
-            && StudentCtrl::existingStudent($id))
+        if(isset($_REQUEST["id"])
+            && isset($_REQUEST["last_name"])
+            && isset($_REQUEST["first_name"])
+            && !StudentCtrl::existingStudent($_REQUEST["id"]))
         {
+            $id = $_REQUEST["id"];
             $last_name = $_REQUEST["last_name"];
             $first_name = $_REQUEST["first_name"];
             $inserted = StudentModel::addStudent($id, $last_name, $first_name);
