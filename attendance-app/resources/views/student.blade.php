@@ -21,7 +21,7 @@
         </table>
     @endif
     <div>
-        <form id="add" @submit="checkForm" action="">
+        <form id="add" @submit="checkForm" action="/student/add" method="POST">
             @csrf
             <h5>Add a Student:</h5>
             <!--<p v-if="errors.length">
@@ -44,7 +44,7 @@
             </p>
             <p><input type="submit" value="Add"></p>
         </form>
-        <form id="delete" action="">
+        <form id="delete" action="/student/delete">
             @csrf
             <h5>Delete a Student:</h5>
             <label for="id">Id:</label>
