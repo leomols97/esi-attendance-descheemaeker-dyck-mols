@@ -22,6 +22,7 @@
     @endif
     <div>
         <form id="add" @submit="checkForm" action="">
+            @csrf
             <h5>Add a Student:</h5>
             <!--<p v-if="errors.length">
                 <b>Please correct the following error(s)</b>
@@ -31,19 +32,20 @@
             </p>-->
             <p>
                 <label for="id">Id :</label>
-                <input id="id" type="number" v-model="id">
+                <input id="id" name="id" type="number" v-model="id">
             </p>
             <p>
                 <label for="LastName">Last Name :</label>
-                <input id="LastName" type="text" v-model="LastName">
+                <input id="LastName" name="last_name" type="text" v-model="LastName">
             </p>
             <p>
                 <label for="FirstName">First Name :</label>
-                <input id="FirstName" type="text" v-model="FirstName">
+                <input id="FirstName" name="first_name" type="text" v-model="FirstName">
             </p>
             <p><input type="submit" value="Add"></p>
         </form>
         <form id="delete" action="">
+            @csrf
             <h5>Delete a Student:</h5>
             <label for="id">Id:</label>
             <input id="id" type="number">
