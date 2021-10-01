@@ -14,8 +14,6 @@ use App\Http\Controllers\StudentCtrl;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [StudentCtrl::class, 'home']);
 
 Route::get('/student', [StudentCtrl::class, 'home']);
