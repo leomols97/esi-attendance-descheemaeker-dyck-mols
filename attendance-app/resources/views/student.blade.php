@@ -44,11 +44,11 @@
             </p>
             <p><input type="submit" value="Add"></p>
         </form>
-        <form id="delete" action="/student/delete">
+        <form id="delete" action="/student/delete" method="POST">
             @csrf
             <h5>Delete a Student:</h5>
             <label for="id">Id:</label>
-            <input id="id" type="number">
+            <input id="id" name="id" type="number">
             <input type="submit" value=delete>
         </form>
     </div>

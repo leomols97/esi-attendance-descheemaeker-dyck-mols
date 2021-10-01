@@ -14,14 +14,25 @@ class StudentCtrl extends Controller
         return view("student", ["students" => $students_json]);
     }
 
+    static function selectStudent($id)
+    {
+        return StudentModel::selectStudent($id);
+    }
+
+    static function existingStudent($id)
+    {
+        return $id == StudentCtrl::selectStudent($id);
+    }
+
     public function addStudent()
     {
         $array=[];
-        if(isset($_REQUEST["id"])
-            && isset($_REQUEST["last_name"])
-            && isset($_REQUEST["first_name"]))
+        $id = $_REQUEST["first_name"];
+        if(isset($id)
+            && isset($id)
+            && isset($id)
+            && StudentCtrl::existingStudent($id))
         {
-            $id = $_REQUEST["id"];
             $last_name = $_REQUEST["last_name"];
             $first_name = $_REQUEST["first_name"];
             $inserted = StudentModel::addStudent($id, $last_name, $first_name);
@@ -32,30 +43,26 @@ class StudentCtrl extends Controller
             $inserted = false;
             $array = ["inserted" => $inserted];
         }
+        $students = StudentModel::findAll();
+        $students_json = json_encode($students);
+        return view("student", ["students" => $students_json]);
     }
 
     public function deleteStudent()
     {
-        echo "A";
         $array=[];
         if(isset($_REQUEST["id"]))
         {
-            if (StudentModel::selectStudent($_REQUEST["id"]) != nullOrEmptyString())
-            {
                 $id = $_REQUEST["id"];
                 $deleted = StudentModel::deleteStudent($id);
-                $array = ["deleted" => $deleted];
-            }
-            else
-            {
-                $deleted = false;
-                $array = ["deleted" => $deleted];
-            }
         }
         else
         {
             $deleted = false;
             $array = ["deleted" => $deleted];
         }
+        $students = StudentModel::findAll();
+        $students_json = json_encode($students);
+        return view("student", ["students" => $students_json]);
     }
 }
