@@ -6,13 +6,15 @@ use Tests\TestCase;
 use App\Models\StudentModel;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PDOException;
+use SQLException;
 
+use PHPUnit\Framework;
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertFalse;
 
 class StudentModelTest extends TestCase
 {
-    //use RefreshDatabase;
+    use RefreshDatabase;
 
     /**
      * A basic test example.
@@ -44,7 +46,7 @@ class StudentModelTest extends TestCase
     public function test_consultation()
     {
         $count = count(StudentModel::findAll());
-        assertEquals(7, $count);
+        $this->assertEquals(7, $count);
     }
 
     /**
@@ -117,6 +119,8 @@ class StudentModelTest extends TestCase
      */
     public function test_delete_student()
     {
-        #code pour delete le student
+        StudentModel::addStudent(1, "SquarePants", "Bob");
+        StudentModel::deleteStudent(1);
+        $this->assertDatabaseMissing('students', ['id' => '1']);
     }
 }
