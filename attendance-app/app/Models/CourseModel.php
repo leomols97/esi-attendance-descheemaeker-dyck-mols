@@ -13,7 +13,7 @@ class CourseModel extends Model
     static public function findAll()
     {
         $courses = DB::select('
-            SELECT cours, date, heure
+            SELECT course, date, hour
             FROM courses
             ORDER BY date ASC
         ');
