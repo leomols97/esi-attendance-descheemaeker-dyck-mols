@@ -5,7 +5,7 @@
 <?php $students = json_decode($students,true); ?>
 
 @section ('content')
-    <h1>Listes des étudiants</h1>
+    <h1>Student List</h1>
     @if(count($students)===0)
         <p>No student</p>
     @else

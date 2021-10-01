@@ -4,7 +4,7 @@ html{
 
 body > header {
     background-color: #236ab9;
-    height: 60px;
+    height: 130px;
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
@@ -62,3 +62,31 @@ form{
 div{
     padding: 20px;
 }
+
+form > p{
+    margin: 3px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #236ab9;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: rgb(62, 132, 190);
+  }

@@ -17,11 +17,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        DB::table('students')->insert([
-            'id' => random_int(10000, 99999),
-            'last_name' => Str::random(20),
-            'first_name' => Str::random(20),
-        ]);
+        for($i=1; $i<7; $i++){
+            DB::table('students')->insert([
+                'id' => random_int(10000, 99999),
+                'last_name' => Str::random(20),
+                'first_name' => Str::random(20),
+            ]);
+        }
     }
 }
