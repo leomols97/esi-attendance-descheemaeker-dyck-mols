@@ -36,6 +36,7 @@ class StudentCtrl extends Controller
 
     public function deleteStudent()
     {
+        echo "A";
         $array=[];
         if(isset($_REQUEST["id"]))
         {
@@ -43,7 +44,7 @@ class StudentCtrl extends Controller
             {
                 $id = $_REQUEST["id"];
                 $deleted = StudentModel::deleteStudent($id);
-                $array += ["deleted" => $deleted];
+                $array = ["deleted" => $deleted];
             }
             else
             {
