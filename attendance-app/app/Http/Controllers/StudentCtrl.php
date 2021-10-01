@@ -32,6 +32,9 @@ class StudentCtrl extends Controller
             $inserted = false;
             $array = ["inserted" => $inserted];
         }
+        $students = StudentModel::findAll();
+        $students_json = json_encode($students);
+        return view("student", ["students" => $students_json]);
     }
 
     public function deleteStudent()
@@ -43,7 +46,7 @@ class StudentCtrl extends Controller
             {
                 $id = $_REQUEST["id"];
                 $deleted = StudentModel::deleteStudent($id);
-                $array += ["deleted" => $deleted];
+                $array = ["deleted" => $deleted];
             }
             else
             {
@@ -56,5 +59,8 @@ class StudentCtrl extends Controller
             $deleted = false;
             $array = ["deleted" => $deleted];
         }
+        $students = StudentModel::findAll();
+        $students_json = json_encode($students);
+        return view("student", ["students" => $students_json]);
     }
 }

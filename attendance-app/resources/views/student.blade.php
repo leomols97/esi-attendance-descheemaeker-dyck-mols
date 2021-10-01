@@ -44,7 +44,7 @@
             </p>
             <p><input type="submit" value="Add"></p>
         </form>
-        <form id="delete" action="/student/delete">
+        <form id="delete" action="/student/delete" method="POST">
             @csrf
             <h5>Delete a Student:</h5>
             <label for="id">Id:</label>

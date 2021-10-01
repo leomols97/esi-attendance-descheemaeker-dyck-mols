@@ -7,7 +7,7 @@
 @section ('content')
     <h1>Courses List</h1>
     @if(count($courses)===0)
-        <p>No student</p>
+        <p>No course</p>
     @else
         <table>
             <tr><th>course</th><th>date</th><th>hour</th></tr>
@@ -15,7 +15,7 @@
                 <tr>
                     <td><?=$course["course"]?></td>
                     <td><?=$course["date"]?></td>
-                    <td><?=$student["hour"]?></td>
+                    <td><?=$course["hour"]?></td>
                 </tr>
             @endforeach
         </table>
