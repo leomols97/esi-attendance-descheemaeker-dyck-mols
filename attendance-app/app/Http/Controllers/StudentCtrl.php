@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\StudentModel;
+use FFI\Exception as FFIException;
 
 class StudentCtrl extends Controller
 {
@@ -14,12 +15,23 @@ class StudentCtrl extends Controller
         return view("student", ["students" => $students_json]);
     }
 
+    static function selectStudent($id)
+    {
+        return StudentModel::selectStudent($id);
+    }
+
+    static function existingStudent($id)
+    {
+        return $id == StudentCtrl::selectStudent($id);
+    }
+
     public function addStudent()
     {
         $array=[];
         if(isset($_REQUEST["id"])
             && isset($_REQUEST["last_name"])
-            && isset($_REQUEST["first_name"]))
+            && isset($_REQUEST["first_name"])
+            && !StudentCtrl::existingStudent($_REQUEST["id"]))
         {
             $id = $_REQUEST["id"];
             $last_name = $_REQUEST["last_name"];
@@ -32,6 +44,9 @@ class StudentCtrl extends Controller
             $inserted = false;
             $array = ["inserted" => $inserted];
         }
+        $students = StudentModel::findAll();
+        $students_json = json_encode($students);
+        return view("student", ["students" => $students_json]);
     }
 
     public function deleteStudent()
@@ -39,22 +54,16 @@ class StudentCtrl extends Controller
         $array=[];
         if(isset($_REQUEST["id"]))
         {
-            if (StudentModel::selectStudent($_REQUEST["id"]) != nullOrEmptyString())
-            {
-                $id = $_REQUEST["id"];
-                $deleted = StudentModel::deleteStudent($id);
-                $array += ["deleted" => $deleted];
-            }
-            else
-            {
-                $deleted = false;
-                $array = ["deleted" => $deleted];
-            }
+            $id = $_REQUEST["id"];
+            $deleted = StudentModel::deleteStudent($id);
         }
         else
         {
             $deleted = false;
             $array = ["deleted" => $deleted];
         }
+        $students = StudentModel::findAll();
+        $students_json = json_encode($students);
+        return view("student", ["students" => $students_json]);
     }
 }

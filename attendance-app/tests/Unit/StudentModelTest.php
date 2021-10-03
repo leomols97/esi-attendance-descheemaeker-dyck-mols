@@ -8,10 +8,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use PDOException;
 use SQLException;
 
-use PHPUnit\Framework;
-use function PHPUnit\Framework\assertEquals;
-use function PHPUnit\Framework\assertFalse;
-
 class StudentModelTest extends TestCase
 {
     use RefreshDatabase;
@@ -58,7 +54,6 @@ class StudentModelTest extends TestCase
     {
         // Make call to application...
         StudentModel::addStudent(1, 'Squarepants', 'Bob');
-        //StudentModel::selectStudent(1);
 
         $this->assertDatabaseHas('Students', [
             'id' => 1,

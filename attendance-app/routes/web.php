@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentCtrl;
+use App\Http\Controllers\CourseCtrl;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,6 @@ use App\Http\Controllers\StudentCtrl;
 Route::get('/', [StudentCtrl::class, 'home']);
 
 Route::get('/student', [StudentCtrl::class, 'home']);
+Route::get('/course', [CourseCtrl::class, 'home']);
+Route::post('/student/add', [StudentCtrl::class, 'addStudent']);
+Route::post('/student/delete', [StudentCtrl::class, 'deleteStudent']);
