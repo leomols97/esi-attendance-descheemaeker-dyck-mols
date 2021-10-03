@@ -4,8 +4,58 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "06a26fce5a8dc369cc950bc8371622b1",
+    "content-hash": "528213c78ecb45cd4c7318dfc58e4061",
     "packages": [
+        {
+            "name": "appstract/laravel-dusk-safari",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/appstract/laravel-dusk-safari.git",
+                "reference": "60f18161b6e0663dab8fe98f4b1890c6aaaa9010"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/appstract/laravel-dusk-safari/zipball/60f18161b6e0663dab8fe98f4b1890c6aaaa9010",
+                "reference": "60f18161b6e0663dab8fe98f4b1890c6aaaa9010",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Appstract\\DuskDrivers\\Safari\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Olav van Schie",
+                    "email": "hello@appstract.team",
+                    "homepage": "https://appstract.team",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Run Dusk tests on Safari",
+            "homepage": "https://github.com/appstract/laravel-dusk-safari",
+            "keywords": [
+                "appstract",
+                "dusk",
+                "laravel",
+                "safari",
+                "testing"
+            ],
+            "support": {
+                "issues": "https://github.com/appstract/laravel-dusk-safari/issues",
+                "source": "https://github.com/appstract/laravel-dusk-safari/tree/master"
+            },
+            "time": "2018-01-22T14:54:37+00:00"
+        },
         {
             "name": "asm89/stack-cors",
             "version": "v2.0.3",
@@ -7950,5 +8000,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.0.0"
 }
