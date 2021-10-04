@@ -13,7 +13,7 @@
             <tr><th>id</th><th>Last name</th><th>First name</th></tr>
             @foreach($students as $student)
                 <tr>
-                    <td><?=$student["id"]?></td>
+                    <td dusk="id_student"><?=$student["id"]?></td>
                     <td><?=$student["last_name"]?></td>
                     <td><?=$student["first_name"]?></td>
                 </tr>
