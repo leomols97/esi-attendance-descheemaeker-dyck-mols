@@ -29,7 +29,7 @@ class StudentModel extends Model
                 ', [$id, $last_name, $first_name]
             );
         } catch (QueryException $th) {
-            echo "Student existant";
+          echo "Student existant";
         }
     }
 

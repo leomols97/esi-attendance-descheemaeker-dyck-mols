@@ -19,9 +19,22 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public static function run()
     {
+        DB::table('students')->insert([
+            'id' => 52006,
+            'last_name' => "Dyck",
+            'first_name' => "Olivier",
+        ]);
+
+        DB::table('students')->insert([
+            'id' => 53212,
+            'last_name' => "Mols",
+            'first_name' => "Léopold",
+        ]);
+
         // \App\Models\User::factory(10)->create();
+        /*
         DB::table('students')->insert([
             'id' => random_int(10000, 99999),
             'last_name' => Str::random(20),
@@ -39,6 +52,6 @@ class DatabaseSeeder extends Seeder
                 'last_name' => Str::random(20),
                 'first_name' => Str::random(20),
             ]);
-        }
+        }*/
     }
 }
