@@ -6,10 +6,12 @@ use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Laravel\Dusk\TestCase as BaseTestCase;
+use  Appstract\DuskDrivers\Safari\SupportsSafari;
+
 
 abstract class DuskTestCase extends BaseTestCase
 {
-    use CreatesApplication;
+    use CreatesApplication, SupportsSafari;
 
     /**
      * Prepare for Dusk test execution.
@@ -22,6 +24,7 @@ abstract class DuskTestCase extends BaseTestCase
         if (! static::runningInSail()) {
             //static::startChromeDriver();
         }
+        static::startSafariDriver();
     }
 
     /**
@@ -41,11 +44,15 @@ abstract class DuskTestCase extends BaseTestCase
         })->all());
 
         return RemoteWebDriver::create(
-            $_ENV['DUSK_DRIVER_URL'] ?? 'http://localhost:9515',
-            DesiredCapabilities::chrome()->setCapability(
-                ChromeOptions::CAPABILITY, $options
-            )
+            'http://localhost:9515', DesiredCapabilities::safari()
         );
+
+        // return RemoteWebDriver::create(
+        //     $_ENV['DUSK_DRIVER_URL'] ?? 'http://localhost:9515',
+        //     DesiredCapabilities::chrome()->setCapability(
+        //         ChromeOptions::CAPABILITY, $options
+        //     )
+        // );
     }
 
     /**
