@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public static function run()
     {
         DB::table('students')->insert([
             'id' => 52006,

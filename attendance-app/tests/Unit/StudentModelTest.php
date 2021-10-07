@@ -2,17 +2,17 @@
 
 namespace Tests\Unit;
 
-//use Tests\TestCase;
+use Tests\TestCase;
 use App\Models\StudentModel;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use PDOException;
-use SQLException;
-use PHPUnit\Framework\TestCase;
-use Database\seeders\DatabaseSeeder;
+use Database\Seeders\DatabaseSeeder;
+
+
 
 class StudentModelTest extends TestCase
 {
     use RefreshDatabase;
+    
 
 
     /**
@@ -24,7 +24,13 @@ class StudentModelTest extends TestCase
     {
         DatabaseSeeder::run();
         $count = count(StudentModel::findAll());
-        $this->assertEquals(7, $count);
+        $this->assertEquals(2, $count);
+        /*$user1 = User::factory()->create([
+            'last_name' => 'Dyck',
+            'first_name' => 'Olivier',
+        ]);*/
+
+
     }
 
     /**
@@ -61,7 +67,7 @@ class StudentModelTest extends TestCase
     public function test_add_student_httpResponse(){
         $response = $this->post('/student/add');
 
-        $response->assertStatus(201);
+        $response->assertStatus(200);
     }
 
     /**
@@ -71,12 +77,12 @@ class StudentModelTest extends TestCase
      */
     public function test_add_existing_student()
     {
-        $this->expectException(PDOException::class);
-        // or for PHPUnit < 5.2
-        // $this->setExpectedException(InvalidArgumentException::class);
-
-        //...and then add your test code that generates the exception
+        
+        DatabaseSeeder::run();
         StudentModel::addStudent(52006, 'Dyck', 'Olivier');
+        $count = count(StudentModel::findAll());
+        $this->assertEquals(2, $count);
+
     }
 
     /**
@@ -86,12 +92,11 @@ class StudentModelTest extends TestCase
      */
     public function test_add_student_invalid_id()
     {
-        $this->expectException(PDOException::class);
-        // or for PHPUnit < 5.2
-        // $this->setExpectedException(InvalidArgumentException::class);
-
-        //...and then add your test code that generates the exception
+        DatabaseSeeder::run();
         StudentModel::addStudent(-1, 'Squarepants', 'Bob');
+        $count = count(StudentModel::findAll());
+        $this->assertEquals(2, $count);
+
     }
 
     /**
@@ -101,12 +106,11 @@ class StudentModelTest extends TestCase
      */
     public function test_delete_student_invalid_id()
     {
-        $this->expectException(PDOException::class);
-        // or for PHPUnit < 5.2
-        // $this->setExpectedException(InvalidArgumentException::class);
-
-        //...and then add your test code that generates the exception
+        DatabaseSeeder::run();
         StudentModel::deleteStudent(2);
+        $count = count(StudentModel::findAll());
+        $this->assertEquals(2, $count);
+       
     }
 
     /**
@@ -128,6 +132,6 @@ class StudentModelTest extends TestCase
     public function test_delete_student_httpResponse()
     {
         $response = $this->post("/student/delete");
-        $reponse->assertStatus(204);
+        $response->assertStatus(200);
     }
 }
